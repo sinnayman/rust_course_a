@@ -25,18 +25,10 @@ impl Shot {
     // - return 0 points if `self` is a Miss
     fn points(self) -> i32 {
         match self {
-            Self::Bullseye => {
-                return 5;
-            }
-            Self::Hit(x) => {
-                if x < 3.0 {
-                    return 2;
-                }
-                return 1;
-            }
-            Self::Miss => {
-                return 0;
-            }
+            Shot::Bullseye => 5,
+            Shot::Hit(x) if x < 3.0 => 2,
+            Shot::Hit(x) => 1,
+            Shot::Miss => 0,
         }
     }
 }
